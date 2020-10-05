@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="pdf_defaults.UCToolBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:pdf_defaults"
+             mc:Ignorable="d" 
+             d:DesignHeight="28" d:DesignWidth="480">
+    <Grid>
+        <ToolBarTray Background="LawnGreen">
+            <ToolBar Width="482" Height="28" Margin="-2,0,0,0" Loaded="ToolBar_Loaded" Background="Gainsboro">
+                <DockPanel Width="{Binding Path=ActualWidth, 
+                                            RelativeSource={RelativeSource AncestorType={x:Type ToolBarPanel}}}">
+                    <DockPanel.Resources>
+                        <Style TargetType="{x:Type Button}" 
+                               BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"/>
+                    </DockPanel.Resources>
+
+                    <Button Height="24" ToolBar.OverflowMode="Never"
+                                        ToolTip="Options">
+                        <TextBlock>Options</TextBlock>
+                    </Button>
+                    <Button Height="24" ToolBar.OverflowMode="Never"
+                                        ToolTip="About" HorizontalAlignment="Right">
+                        <Image Source="/img/snf-info.png"/>
+                    </Button>
+                </DockPanel>
+            </ToolBar>
+        </ToolBarTray>
+
+    </Grid>
+</UserControl>
