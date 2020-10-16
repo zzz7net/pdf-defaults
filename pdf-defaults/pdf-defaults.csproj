@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="app-icon.ico" />
     <None Remove="folder-page.png" />
     <None Remove="img-folder-page.png" />
     <None Remove="img-snf-info.png" />

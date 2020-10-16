@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:pdf_defaults"
-             mc:Ignorable="d" 
-             d:DesignWidth="480" d:DesignHeight="570">
+             mc:Ignorable="d"
+             d:DesignWidth="400" d:DesignHeight="580">
 
     <UserControl.Background>
         <SolidColorBrush Color="#FFF0F0F0"/>
@@ -13,171 +13,169 @@
 
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top" ShowGridLines="False">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
             <ColumnDefinition Width="380" />
             <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="90" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="15" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="15" />
         </Grid.RowDefinitions>
 
-        <Border Width="370" Height="96" Grid.Column="0" 
-                HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                BorderThickness="1" CornerRadius="3" BorderBrush="LightGray">
-            <Grid>
-                <ComboBox Text="Select or drag PDF files here" Width="300" Height="24" Margin="16,19,54,54" IsReadOnly="True" IsEditable="True" Foreground="#FFCDC9C9">
-                    <ComboBoxItem Content="File1.pdf"/>
-                    <ComboBoxItem Content="File2.pdf"/>
-                </ComboBox>
-                <Button Style="{StaticResource ButtonStyle-custom}" Width="24" Height="24" Margin="330,18,15,51" Cursor="Hand">
-                    <Image x:Name="imgFolderPage" Source="/img/folder-page.png"/>
-                </Button>
-                <CheckBox Content="Specify a custom:   " Width="130" Height="24" Margin="40,56,200,14" HorizontalContentAlignment="Right"/>
-                <TextBox x:Name="txtSuffixName" Text="File name &lt;suffix&gt;" Width="140" Height="24" Margin="175,53,55,20" TextWrapping="Wrap" Foreground="#FFCDC9C9"/>
+        <Border Grid.Row="1" Grid.Column="1" 
+                BorderThickness="1" CornerRadius="3" BorderBrush="LightGray" Background="WhiteSmoke">
+            <Grid Width="360" Margin="10,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                    <ComboBox Text="Select or drag PDF files here" Width="310" Height="24" 
+                          IsReadOnly="True" IsEditable="True" Foreground="#FFCDC9C9">
+                        <ComboBoxItem Content="File1.pdf"/>
+                        <ComboBoxItem Content="File2.pdf"/>
+                    </ComboBox>
+                    <Button Style="{StaticResource ButtonStyle-custom}" Width="24" Height="24" 
+                            Margin="16,0,0,0" Cursor="Hand">
+                        <Image x:Name="imgFolderPage" Source="/img/folder-page.png"/>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
+                    <TextBox x:Name="txtSuffixName" Text="File name &lt;suffix&gt;" 
+                             Width="140" Height="24" Foreground="#FFCDC9C9"/>
+                    <CheckBox Content="Edit a Copy" Height="16"
+                              Margin="132,0,0,0" />
+                </StackPanel>
             </Grid>
         </Border>
 
-        <GroupBox Width="80" Height="110" Grid.Column="2" 
-                  HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                  Style="{StaticResource GroupBoxStyle-custom}">
-            <GroupBox.Header>
-                <Label Content="Apply to" Foreground="Gray"/>
-            </GroupBox.Header>
-            <Grid>
-                <RadioButton Content=" File:" Margin="11,10,10,46" Height="24" Width="60" IsChecked="True"/>
-                <RadioButton Content=" Copy:"  Margin="11,44,10,12" Height="24" Width="60"/>
-            </Grid>
-        </GroupBox>
+        <Grid Grid.Row="3" Grid.Column="1" Margin="10,0">
+            <Label Content="Default Settings:" Width="100" Height="28" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Gray"/>
+            <Button Content="Adjust" Width="90" Height="24" 
+                    HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        </Grid>
 
-        <Button Content="Modify" Width="70" Height="24" 
-                HorizontalAlignment="Left" VerticalAlignment="Top"
-                Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" Margin="5,14,0,0"/>
+        <Border Grid.Row="5" Grid.Column="1" CornerRadius="3"
+                BorderThickness="1" BorderBrush="LightGray" Background="WhiteSmoke">
 
-        <Expander Width="370" HorizontalAlignment="Right"
-                  Grid.Row="1" Grid.Column="0" Margin="0,12,0,0"
-                  BorderThickness="0" BorderBrush="LightGray" IsExpanded="True"
-                  Style="{StaticResource ExpanderStyle-custom}">
-            <!--Expanded="Expander_Expanded" Collapsed="Expander_Collapsed"-->
-            <Expander.Header>
-                <Label Content="Bookmarks" Margin="11,0" Foreground="Gray"/>
-            </Expander.Header>
-            <Border Height="48" Margin="0,8,0,0" Padding="0,12" 
-                    BorderThickness="1" CornerRadius="3" BorderBrush="LightGray">
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Zoom Level: " Width="150" Height="24" 
-                           HorizontalContentAlignment="Right" Padding="0,3,11,0" Margin="26,0,0,0"/>
-                    <ComboBox Width="140" Height="24" MaxDropDownHeight="275"
-                          SelectedIndex="0"  IsReadOnly="True" IsEditable="True">
-                        <ComboBoxItem Content="Inherit Zoom"/>
-                        <Separator/>
-                        <ComboBoxItem Content="Actual Size"/>
-                        <ComboBoxItem Content="Fit Page"/>
-                        <ComboBoxItem Content="Fit Width"/>
-                        <ComboBoxItem Content="Fit Visible"/>
-                        <Separator/>
-                        <ComboBoxItem Content="Zoom To..."/>
-                    </ComboBox>
-                </StackPanel>
-            </Border>
-        </Expander>
+            <TabControl TabStripPlacement="Right" Margin="10,10"
+                        Style="{StaticResource TabControlStyle-custom}">
 
-        <Expander Width="370" HorizontalAlignment="Right"
-                  Grid.Row="2" Grid.Column="0" Margin="0,8,0,0"
-                  BorderThickness="0" BorderBrush="LightGray" IsExpanded="False"
-                  Style="{StaticResource ExpanderStyle-custom}">
-            <!--Expanded="Expander_Expanded" Collapsed="Expander_Collapsed"-->
-            <Expander.Header>
-                <Label Content="Initial View" Margin="11,0" Foreground="Gray"/>
-            </Expander.Header>
-            <Border Height="305" Margin="0,8,0,0" Padding="0,12"
-                    BorderThickness="1" CornerRadius="3" BorderBrush="LightGray">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="178"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+                <TabItem Header="Bookmarks" Style="{StaticResource TabItemStyle-custom}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="58"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="58"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15"/>
+                            <RowDefinition Height="138"/>
+                            <RowDefinition Height="15"/>
+                        </Grid.RowDefinitions>
 
-                    <Label Content="Navigation: " Width="150" Height="24" Grid.Row="0" Grid.Column="0"
-                           HorizontalContentAlignment="Right" Padding="0,3,11,0" Margin="26,0,0,0"/>
-                    <ComboBox Width="140" Height="24" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1"
-                              SelectedIndex="3" MaxDropDownHeight="275" IsReadOnly="True" IsEditable="True">
-                        <ComboBoxItem Content="Page Only"/>
-                        <ComboBoxItem Content="Bookmarks Panel and Page"/>
-                        <ComboBoxItem Content="Pages Panel and Page"/>
-                        <ComboBoxItem Content="Attachments Panel and Page"/>
-                        <ComboBoxItem Content="Layers Panel and Page"/>
-                    </ComboBox>
-
-                    <Label Content="Page Layout: " Width="150" Height="24" Grid.Row="1" Grid.Column="0"
-                           HorizontalContentAlignment="Right" Padding="0,3,11,0" Margin="26,0,0,0"/>
-                    <ComboBox Width="140" Height="24" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" 
-                              SelectedIndex="0" MaxDropDownHeight="275" IsReadOnly="True" IsEditable="True">
-                        <ComboBoxItem Content="Default"/>
-                        <ComboBoxItem Content="Single Page"/>
-                        <ComboBoxItem Content="Single Page Continuous"/>
-                        <ComboBoxItem Content="Two-Up (Facing)"/>
-                        <ComboBoxItem Content="Two-Up Continuous (Facing)"/>
-                        <ComboBoxItem Content="Two-Up (Cover Page)"/>
-                        <ComboBoxItem Content="Two-Up Continuous (Cover Page)"/>
-                    </ComboBox>
-
-                    <Label Content="Magnification: " Width="150" Height="24" Grid.Row="2" Grid.Column="0"
-                           HorizontalContentAlignment="Right" Padding="0,3,11,0" Margin="26,0,0,0"/>
-                    <ComboBox Width="140" Height="24" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" 
-                              SelectedIndex="0" MaxDropDownHeight="275" IsReadOnly="True" IsEditable="True">
-                        <ComboBoxItem Content="Default"/>
-                        <ComboBoxItem Content="Actual Size"/>
-                        <ComboBoxItem Content="Fit Page"/>
-                        <ComboBoxItem Content="Fit Width"/>
-                        <ComboBoxItem Content="Fit Height"/>
-                        <ComboBoxItem Content="Fit Visible"/>
-                    </ComboBox>
-
-                    <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2" 
-                                HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <Label Content="Open to Page:"/>
-                        <TextBox Text="1" Width="42" Height="20" FontWeight="DemiBold"
-                                 HorizontalContentAlignment="Center"/>
-                        <Label Content="to"/>
-                        <Label Content="649" FontWeight="DemiBold"/>
-                    </StackPanel>
-
-                    <GroupBox Height="100" Grid.Row="4" Grid.Column="1"
-                              Style="{StaticResource GroupBoxStyle-custom}">
-                        <GroupBox.Header>
-                            <Label Content="Window Options" Foreground="Gray"/>
-                        </GroupBox.Header>
-                        <StackPanel>
-                            <CheckBox Content="Display document title"/>
-                            <CheckBox Content="Open in Full Screen mode"/>
-                            <CheckBox Content="Center window on screen"/>
-                            <CheckBox Content="Resize window to initial page"/>
+                        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Width="186">
+                            <Border Background="WhiteSmoke" BorderBrush="LightGray"  
+                                    BorderThickness="1" CornerRadius="2,2,0,0">
+                                <Label Content="Zoom Factor :" Padding="0,1" Margin="22,0"
+                                       HorizontalAlignment="Right"
+                                       FontSize="11" FontWeight="DemiBold" Foreground="DarkGray"/>
+                            </Border>
+                            <ComboBox Width="186" Height="24" Margin="0,-1"
+                                MaxDropDownHeight="275" SelectedIndex="0" IsReadOnly="True" 
+                                Background="White" BorderBrush="LightGray" 
+                                ItemsSource="{Binding CmbContent_ZoomFactor}">
+                            </ComboBox>
                         </StackPanel>
-                    </GroupBox>
-                    <GroupBox Height="80" Grid.Row="5" Grid.Column="1"
-                              Style="{StaticResource GroupBoxStyle-custom}">
-                        <GroupBox.Header>
-                            <Label Content="User Interface Options" Foreground="Gray"/>
-                        </GroupBox.Header>
-                        <StackPanel>
-                            <CheckBox Content="Hide menu bar"/>
-                            <CheckBox Content="Hide tool bars"/>
-                            <CheckBox Content="Hide window controls"/>
+                        
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Initial View" Style="{StaticResource TabItemStyle-custom}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="58"/>
+                            <ColumnDefinition Width="186"/>
+                            <ColumnDefinition Width="58"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15"/>
+                            <RowDefinition Height="24"/>
+                            <RowDefinition Height="24"/>
+                            <RowDefinition Height="24"/>
+                            <RowDefinition Height="28"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="15"/>
+                        </Grid.RowDefinitions>
+
+                        <ComboBox Height="24" Grid.Row="1" Grid.Column="1" 
+                                  MaxDropDownHeight="275" SelectedIndex="3" IsReadOnly="True" 
+                                  Background="White" BorderBrush="LightGray"
+                                  ItemsSource="{Binding CmbContent_NaviPanels}">
+                        </ComboBox>
+
+                        <ComboBox Height="24" Grid.Row="2" Grid.Column="1" 
+                                  MaxDropDownHeight="275" SelectedIndex="0" IsReadOnly="True" 
+                                  Background="White" BorderBrush="LightGray"
+                                  ItemsSource="{Binding CmbContent_PageLayout}">
+                        </ComboBox>
+
+                        <ComboBox Height="24" Grid.Row="3" Grid.Column="1" 
+                                  MaxDropDownHeight="275" SelectedIndex="0" IsReadOnly="True" 
+                                  Background="White" BorderBrush="LightGray"
+                                  ItemsSource="{Binding CmbContent_DocsMagnif}">
+                        </ComboBox>
+
+                        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+                            <Label Content="Open to Page:" Margin="0,0,4,0"/>
+                            <TextBox Text="1" Width="42" Height="20" FontWeight="DemiBold"
+                                 HorizontalContentAlignment="Center" Padding="0,-0.6"/>
+                            <Label Content="to"/>
+                            <Label Content="649" FontWeight="DemiBold"/>
                         </StackPanel>
-                    </GroupBox>
-                </Grid>
-            </Border>
-        </Expander>
+
+                        <Expander Grid.Row="6" Grid.Column="1"                                 
+                                  BorderThickness="0" BorderBrush="LightGray" IsExpanded="False">
+                            <Expander.Header>
+                                <Label Content="More" Height="26" Margin="11,0" Foreground="Gray"/>
+                            </Expander.Header>
+
+                            <StackPanel Height="180">
+                                <GroupBox Style="{StaticResource GroupBoxStyle-custom}">
+                                    <GroupBox.Header>
+                                        <Label Content="Window Options" Foreground="Gray"/>
+                                    </GroupBox.Header>
+                                    <StackPanel>
+                                        <CheckBox Content="Display document title"/>
+                                        <CheckBox Content="Open in Full Screen mode"/>
+                                        <CheckBox Content="Center window on screen"/>
+                                        <CheckBox Content="Resize window to initial page"/>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Style="{StaticResource GroupBoxStyle-custom}">
+                                    <GroupBox.Header>
+                                        <Label Content="Interface Options" Foreground="Gray"/>
+                                    </GroupBox.Header>
+                                    <StackPanel>
+                                        <CheckBox Content="Hide menu bar"/>
+                                        <CheckBox Content="Hide tool bars"/>
+                                        <CheckBox Content="Hide window controls"/>
+                                    </StackPanel>
+                                </GroupBox>
+                            </StackPanel>
+                        </Expander>
+                    </Grid>
+                </TabItem>
+                
+            </TabControl>
+        </Border>
     </Grid>
 </UserControl>

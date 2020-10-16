@@ -25,6 +25,7 @@ namespace pdf_defaults
             // Get the main window
             // MainWindow mw = this;
             InitializeComponent();
+            DataContext = new ViewModel();
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)

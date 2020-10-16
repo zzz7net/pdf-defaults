@@ -11,6 +11,6 @@
 
     <StackPanel>
         <local:UCToolBar />
-        <local:UCForm Width="480" />
+        <local:UCForm />
     </StackPanel>
 </Window>

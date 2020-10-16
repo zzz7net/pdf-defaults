@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:pdf_defaults"
              mc:Ignorable="d" 
-             d:DesignHeight="28" d:DesignWidth="480">
+             d:DesignHeight="28" d:DesignWidth="400">
     <Grid>
         <ToolBarTray Background="LawnGreen">
-            <ToolBar Width="482" Height="28" Margin="-2,0,0,0" Loaded="ToolBar_Loaded" Background="Gainsboro">
+            <ToolBar Width="402" Height="28" Margin="-2,0,0,0" Loaded="ToolBar_Loaded" Background="Gainsboro">
                 <DockPanel Width="{Binding Path=ActualWidth, 
                                             RelativeSource={RelativeSource AncestorType={x:Type ToolBarPanel}}}">
                     <DockPanel.Resources>
